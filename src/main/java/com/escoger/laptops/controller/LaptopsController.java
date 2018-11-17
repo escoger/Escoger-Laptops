@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.escoger.laptops.beans.*;
+import com.escoger.laptops.beans.AllLaptopBean;
 import com.escoger.laptops.services.LaptopService;
-import com.google.common.net.MediaType;
 
 @RestController
 @RequestMapping(path = "/laptops", consumes = "application/json", produces = "application/json")
