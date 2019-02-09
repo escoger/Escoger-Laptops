@@ -173,7 +173,7 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 
 	@Override
 	public Collection<? extends Object> getAllLaptopsBasedOnBrand(String brand, Class clazz) {
-		List<AllLaptopBean> getAllLaptopsBasedOnBrandList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"laptops").where(QueryBuilder.eq("laptopType", "androidmobiles")), clazz);
+		List<AllLaptopBean> getAllLaptopsBasedOnBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops").where(QueryBuilder.eq("brand", brand)), clazz);
 		return getAllLaptopsBasedOnBrandList;
 	}
 	

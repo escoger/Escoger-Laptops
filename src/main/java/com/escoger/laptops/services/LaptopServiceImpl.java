@@ -42,7 +42,7 @@ public class LaptopServiceImpl implements LaptopService{
 		}
 		
 		try {
-			 clazz = Class.forName("com.escoger.laptops.beans."+brand);
+			 clazz = Class.forName("com.escoger.laptops.beans.AllLaptopBean");
 			 System.out.println("clazz is :"+clazz);
 			 AllLaptopsBasedOnBrandList = new ArrayList<Object>(laptopDao.getAllLaptopsBasedOnBrand(brand,clazz));
 		}
