@@ -26,9 +26,9 @@ public class LaptopServiceImpl implements LaptopService{
 	@Override
 	public List<AllLaptopBean> getAllLaptops() {
 		logger.info("ENTER :List<AllLaptopBean> getAllLaptops");
-		 Iterable<AllLaptopBean> mobileList = laptopDao.getAllLaptops();
+		 Iterable<AllLaptopBean> laptopList = laptopDao.getAllLaptops();
 		 logger.info("EXIT :List<AllLaptopBean> getAllLaptops");
-		 return (List<AllLaptopBean>) mobileList;
+		 return (List<AllLaptopBean>) laptopList;
 	}
 
 

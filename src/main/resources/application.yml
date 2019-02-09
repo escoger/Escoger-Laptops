@@ -16,7 +16,7 @@ server:
 spring:
   data:
     cassandra:
-      keyspace-name: escoger_mobiles
+      keyspace-name: escoger_laptops
       contact-points: localhost
   jpa:
     show-sql: true

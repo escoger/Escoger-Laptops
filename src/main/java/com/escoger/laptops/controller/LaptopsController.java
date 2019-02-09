@@ -12,31 +12,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.escoger.laptops.beans.*;
+import com.escoger.laptops.beans.AllLaptopBean;
 import com.escoger.laptops.services.LaptopService;
-import com.google.common.net.MediaType;
 
 @RestController
-@RequestMapping(path = "/laptops", consumes = "application/json", produces = "application/json")
+@RequestMapping(path = "/laptops")//, consumes = "application/json", produces = "application/json")
 public class LaptopsController {
 	private static final Logger logger = LoggerFactory.getLogger(LaptopsController.class);
 	LaptopService laptopService;
 	
 	@Autowired
     public LaptopsController(LaptopService laptopService) {
-		// TODO Auto-generated constructor stub
 		this.laptopService = laptopService;
 	}
 	
 	@GetMapping	("/All")
 	public ResponseEntity<List<AllLaptopBean>> getAllLaptops() {
-
 		return new ResponseEntity<List<AllLaptopBean>>(laptopService.getAllLaptops(), HttpStatus.OK);
 	}
 	
 	@GetMapping	("/laptopBrand/{brand}")
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrand(@PathVariable String brand) {
-
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrand(brand), HttpStatus.OK);
 	}
 

@@ -11,7 +11,6 @@ import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.stereotype.Repository;
 
 import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.QueryLogger;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.escoger.laptops.beans.AllLaptopBean;
 import com.escoger.laptops.repo.config.AllLaptopsRepo;
@@ -100,8 +99,8 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 
 	@Override
 	public List<AllLaptopBean> getAllLaptops() {
-		// TODO Auto-generated method stub
-		return null;
+		List<AllLaptopBean> allLaptopList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops"), AllLaptopBean.class);
+		return allLaptopList;
 	}
 
 
