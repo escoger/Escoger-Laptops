@@ -295,6 +295,29 @@ public class LaptopServiceImpl implements LaptopService{
 	}
 
 
+	@Override
+	public List<Object> getAllLaptopsBasedOnBrands(List<Object> brands) {
+		List<Object> AllLaptopsBasedOnBrandsList = null;
+		Class clazz = null;
+		
+		if(brands==null || brands.isEmpty()) {
+			// need to handle this scenario
+		}
+		
+		try {
+			 clazz = Class.forName("com.escoger.laptops.beans.AllLaptopBean");
+			 System.out.println("clazz is :"+clazz);
+			 AllLaptopsBasedOnBrandsList = new ArrayList<Object>(laptopDao.getAllLaptopsBasedOnBrands(brands,clazz));
+		}
+		
+		catch(Exception e1) {
+			e1.printStackTrace();
+		}
+	
+		return AllLaptopsBasedOnBrandsList;
+	}
+
+
 	
 	
 	

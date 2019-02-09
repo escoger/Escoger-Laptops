@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +36,11 @@ public class LaptopsController {
 	@GetMapping	("/laptopBrand/{brand}")
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrand(@PathVariable String brand) {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrand(brand), HttpStatus.OK);
+	}
+	
+	@PostMapping ("/laptopBrand/brands")
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrands(@RequestBody List<Object> brands) {
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrands(brands), HttpStatus.OK);
 	}
 
 	@GetMapping("/laptopBrand/{brand}/colour/{colour}")

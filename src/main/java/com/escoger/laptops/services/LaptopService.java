@@ -19,6 +19,7 @@ public interface LaptopService {
 	public List<Object> getAllLaptopsBasedOnBrandAndPriceRange(String brand, String priceRange);
 	public List<Object> getAllLaptopsBasedOnBrandAndOS(String brand, String os);
 	public List<Object> getAllLaptopsBasedOnBrandAndGraphics(String brand, String graphics);
+	public List<Object> getAllLaptopsBasedOnBrands(List<Object> brands);
 	
 	
 }

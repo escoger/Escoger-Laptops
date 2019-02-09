@@ -176,4 +176,15 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 		List<AllLaptopBean> getAllLaptopsBasedOnBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops").where(QueryBuilder.eq("brand", brand)), clazz);
 		return getAllLaptopsBasedOnBrandList;
 	}
+	
+	@Override
+	public Collection<? extends Object> getAllLaptopsBasedOnBrands(List<Object> brands, Class clazz) {
+		/*List<String> brands = new ArrayList();
+		brands.add("hp");
+		brands.add("Acer");*/
+		
+		List<AllLaptopBean> getAllLaptopsBasedOnBrandsList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops").where(QueryBuilder.in("brand", brands)), clazz);
+		return getAllLaptopsBasedOnBrandsList;
+	}
+	
 }
