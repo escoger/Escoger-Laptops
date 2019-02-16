@@ -16,8 +16,7 @@ public interface AllLaptopsRepo  {
 
 	Collection<? extends Object> getAllLaptopsBasedOnBrandAndType(String brand, String type, Class clazz);
 
-	Collection<? extends Object> getAllLaptopsBasedOnBrandAndRecentLaunches(String brand, String recentLaunches,
-			Class clazz);
+	Collection<? extends Object> getAllLaptopsBasedOnBrandAndRecentLaunches(String brand,Class clazz);
 
 	Collection<? extends Object> getAllLaptopsBasedOnBrandAndColour(String brand, String colour, Class clazz);
 

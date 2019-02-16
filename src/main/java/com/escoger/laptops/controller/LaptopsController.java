@@ -48,9 +48,9 @@ public class LaptopsController {
 		return new ResponseEntity<List<AllLaptopBean>>(laptopService.getAllLaptopsBasedOnRecentLaunches(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/laptopBrand/{brand}/recentLaunches/{recentLaunches}")
-	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndRecentLaunches(@PathVariable String brand, @PathVariable String recentLaunches) {
-		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndRecentLaunches(brand, recentLaunches), HttpStatus.OK);
+	@GetMapping("/recentLaunches/{brand}")
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndRecentLaunches(@PathVariable String brand) {
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndRecentLaunches(brand), HttpStatus.OK);
 	}
 
 	@GetMapping("/laptopBrand/{brand}/colour/{colour}")

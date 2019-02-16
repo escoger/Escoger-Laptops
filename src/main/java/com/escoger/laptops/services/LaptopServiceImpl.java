@@ -177,7 +177,7 @@ public class LaptopServiceImpl implements LaptopService{
 
 
 	@Override
-	public List<Object> getAllLaptopsBasedOnBrandAndRecentLaunches(String brand, String recentLaunches) {
+	public List<Object> getAllLaptopsBasedOnBrandAndRecentLaunches(String brand) {
 		List<Object> AllLaptopsBasedOnBrandAndRecentLaunchesList = null;
 		Class clazz = null;
 		
@@ -186,9 +186,9 @@ public class LaptopServiceImpl implements LaptopService{
 		}
 		
 		try {
-			 clazz = Class.forName("com.escoger.laptops.beans."+brand);
+			 clazz = Class.forName("com.escoger.laptops.beans.AllLaptopBean");
 			 System.out.println("clazz is :"+clazz);
-			 AllLaptopsBasedOnBrandAndRecentLaunchesList = new ArrayList<Object>(laptopDao.getAllLaptopsBasedOnBrandAndRecentLaunches(brand,recentLaunches,clazz));
+			 AllLaptopsBasedOnBrandAndRecentLaunchesList = new ArrayList<Object>(laptopDao.getAllLaptopsBasedOnBrandAndRecentLaunches(brand,clazz));
 		}
 		
 		catch(Exception e1) {
@@ -320,7 +320,7 @@ public class LaptopServiceImpl implements LaptopService{
 
 	@Override
 	public List<AllLaptopBean> getAllLaptopsBasedOnRecentLaunches() {logger.info("ENTER :List<AllLaptopBean> getAllLaptops");
-	 Iterable<AllLaptopBean> laptopList = laptopDao.getAllLaptopsBasedOnRecentLaunches();
-	 return (List<AllLaptopBean>) laptopList;
+	 Iterable<AllLaptopBean> recentLaunchLaptopList = laptopDao.getAllLaptopsBasedOnRecentLaunches();
+	 return (List<AllLaptopBean>) recentLaunchLaptopList;
 	 }
 }

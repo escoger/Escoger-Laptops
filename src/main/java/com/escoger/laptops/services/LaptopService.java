@@ -14,7 +14,7 @@ public interface LaptopService {
 	public List<Object> getAllLaptopsBasedOnBrandAndMemory(String brand, String memory);
 	public List<Object> getAllLaptopsBasedOnBrandAndProcessor(String brand, String processor);
 	public List<Object> getAllLaptopsBasedOnBrandAndColour(String brand, String colour);
-	public List<Object> getAllLaptopsBasedOnBrandAndRecentLaunches(String brand, String recentLaunches);
+	public List<Object> getAllLaptopsBasedOnBrandAndRecentLaunches(String brand);
 	public List<Object> getAllLaptopsBasedOnBrandAndType(String brand, String type);
 	public List<Object> getAllLaptopsBasedOnBrandAndPriceRange(String brand, String priceRange);
 	public List<Object> getAllLaptopsBasedOnBrandAndOS(String brand, String os);

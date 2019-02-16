@@ -134,9 +134,8 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 
 
 	@Override
-	public Collection<? extends Object> getAllLaptopsBasedOnBrandAndRecentLaunches(String brand, String recentLaunches,
-			Class clazz) {
-		List<AllLaptopBean> getAllLaptopsBasedOnBrandAndRecentLaunchesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"laptops").where(QueryBuilder.eq("laptopType", "recentLaunches")), clazz);
+	public Collection<? extends Object> getAllLaptopsBasedOnBrandAndRecentLaunches(String brand,Class clazz) {
+		List<AllLaptopBean> getAllLaptopsBasedOnBrandAndRecentLaunchesList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_recent_launch").where(QueryBuilder.eq("brand", brand)), clazz);
 		return getAllLaptopsBasedOnBrandAndRecentLaunchesList;
 	}
 
