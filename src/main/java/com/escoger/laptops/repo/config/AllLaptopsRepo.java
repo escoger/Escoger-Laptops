@@ -31,6 +31,8 @@ public interface AllLaptopsRepo  {
 
 	Collection<? extends Object> getAllLaptopsBasedOnBrands(List<Object> brands, Class clazz);
 
+	public List<AllLaptopBean> getAllLaptopsBasedOnRecentLaunches();
+
 	
 	
 	

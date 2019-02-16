@@ -318,7 +318,9 @@ public class LaptopServiceImpl implements LaptopService{
 	}
 
 
-	
-	
-	
+	@Override
+	public List<AllLaptopBean> getAllLaptopsBasedOnRecentLaunches() {logger.info("ENTER :List<AllLaptopBean> getAllLaptops");
+	 Iterable<AllLaptopBean> laptopList = laptopDao.getAllLaptopsBasedOnRecentLaunches();
+	 return (List<AllLaptopBean>) laptopList;
+	 }
 }

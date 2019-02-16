@@ -120,8 +120,7 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 
 
 	@Override
-	public Collection<? extends Object> getAllLaptopsBasedOnBrandAndPriceRange(String brand, String priceRange,
-			Class clazz) {
+	public Collection<? extends Object> getAllLaptopsBasedOnBrandAndPriceRange(String brand, String priceRange,Class clazz) {
 		List<AllLaptopBean> getAllLaptopsBasedOnBrandAndPriceRangeList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"laptops").where(QueryBuilder.eq("laptopType", "priceRange")), clazz);
 		return getAllLaptopsBasedOnBrandAndPriceRangeList;
 	}
@@ -179,12 +178,15 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 	
 	@Override
 	public Collection<? extends Object> getAllLaptopsBasedOnBrands(List<Object> brands, Class clazz) {
-		/*List<String> brands = new ArrayList();
-		brands.add("hp");
-		brands.add("Acer");*/
-		
 		List<AllLaptopBean> getAllLaptopsBasedOnBrandsList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops").where(QueryBuilder.in("brand", brands)), clazz);
 		return getAllLaptopsBasedOnBrandsList;
+	}
+
+
+	@Override
+	public List<AllLaptopBean> getAllLaptopsBasedOnRecentLaunches() {
+		List<AllLaptopBean> recentLaunchLaptopList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_recent_launch"), AllLaptopBean.class);
+		return recentLaunchLaptopList;
 	}
 	
 }

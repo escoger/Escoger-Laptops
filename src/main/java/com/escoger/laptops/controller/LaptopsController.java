@@ -42,6 +42,16 @@ public class LaptopsController {
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrands(@RequestBody List<Object> brands) {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrands(brands), HttpStatus.OK);
 	}
+	
+	@GetMapping("/recentLaunches")
+	public ResponseEntity<List<AllLaptopBean>> getAllLaptopsBasedOnRecentLaunches() {
+		return new ResponseEntity<List<AllLaptopBean>>(laptopService.getAllLaptopsBasedOnRecentLaunches(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/laptopBrand/{brand}/recentLaunches/{recentLaunches}")
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndRecentLaunches(@PathVariable String brand, @PathVariable String recentLaunches) {
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndRecentLaunches(brand, recentLaunches), HttpStatus.OK);
+	}
 
 	@GetMapping("/laptopBrand/{brand}/colour/{colour}")
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndColour(@PathVariable String brand, @PathVariable String colour) {
@@ -71,10 +81,7 @@ public class LaptopsController {
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndRam(@PathVariable String brand, @PathVariable String Ram) {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndRam(brand, Ram), HttpStatus.OK);
 	}
-	@GetMapping("/laptopBrand/{brand}/recentLaunches/{recentLaunches}")
-	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndRecentLaunches(@PathVariable String brand, @PathVariable String recentLaunches) {
-		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndRecentLaunches(brand, recentLaunches), HttpStatus.OK);
-	}
+	
 	@GetMapping("/laptopBrand/{brand}/Screensize/{Screensize}")
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndScreensize(@PathVariable String brand, @PathVariable String Screensize) {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndScreensize(brand, Screensize), HttpStatus.OK);
