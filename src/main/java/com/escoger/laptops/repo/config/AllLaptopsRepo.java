@@ -10,7 +10,7 @@ public interface AllLaptopsRepo  {
 
 	Collection<? extends Object> getAllLaptopsBasedOnBrandAndGraphics(String brand, String graphics, Class clazz);
 
-	Collection<? extends Object> getAllLaptopsBasedOnBrandAndOS(String brand, String os, Class clazz);
+	Collection<? extends Object> getAllLaptopsBasedOnBrandAndOS(String os, String brand, Class clazz);
 
 	Collection<? extends Object> getAllLaptopsBasedOnBrandAndPriceRange(String brand, String priceRange, Class clazz);
 
@@ -32,7 +32,6 @@ public interface AllLaptopsRepo  {
 
 	public List<AllLaptopBean> getAllLaptopsBasedOnRecentLaunches();
 
-	
-	
-	
+	public Collection<? extends Object> getAllLaptopsBasedOnOS(String os);
+		
 }

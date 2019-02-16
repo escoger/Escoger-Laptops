@@ -17,10 +17,11 @@ public interface LaptopService {
 	public List<Object> getAllLaptopsBasedOnBrandAndRecentLaunches(String brand);
 	public List<Object> getAllLaptopsBasedOnBrandAndType(String brand, String type);
 	public List<Object> getAllLaptopsBasedOnBrandAndPriceRange(String brand, String priceRange);
-	public List<Object> getAllLaptopsBasedOnBrandAndOS(String brand, String os);
+	public List<Object> getAllLaptopsBasedOnBrandAndOS(String os, String brand);
 	public List<Object> getAllLaptopsBasedOnBrandAndGraphics(String brand, String graphics);
 	public List<Object> getAllLaptopsBasedOnBrands(List<Object> brands);
-	public List<AllLaptopBean> getAllLaptopsBasedOnRecentLaunches();
+	public List<Object> getAllLaptopsBasedOnRecentLaunches();
+	public List<Object> getAllLaptopsBasedOnOS(String os);
 	
 	
 }

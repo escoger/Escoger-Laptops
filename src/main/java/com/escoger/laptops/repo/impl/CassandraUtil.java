@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.escoger.laptops.beans.AllLaptopBean;
+import com.escoger.laptops.beans.LaptopsOSTypeBean;
 import com.escoger.laptops.repo.config.AllLaptopsRepo;
 import com.escoger.laptops.services.LaptopService;
 import com.escoger.laptops.services.LaptopServiceImpl;
@@ -113,8 +114,8 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 
 
 	@Override
-	public Collection<? extends Object> getAllLaptopsBasedOnBrandAndOS(String brand, String os, Class clazz) {
-		List<AllLaptopBean> getAllLaptopsBasedOnBrandAndOSList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"laptops").where(QueryBuilder.eq("laptopType", "os")), clazz);
+	public Collection<? extends Object> getAllLaptopsBasedOnBrandAndOS(String os, String brand, Class clazz) {
+		List<AllLaptopBean> getAllLaptopsBasedOnBrandAndOSList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_os_type").where(QueryBuilder.eq("operating_system",os)).and(QueryBuilder.eq("brand",brand)), clazz);
 		return getAllLaptopsBasedOnBrandAndOSList;
 	}
 
@@ -186,6 +187,12 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 	public List<AllLaptopBean> getAllLaptopsBasedOnRecentLaunches() {
 		List<AllLaptopBean> recentLaunchLaptopList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_recent_launch"), AllLaptopBean.class);
 		return recentLaunchLaptopList;
+	}
+
+	@Override
+	public Collection<? extends Object> getAllLaptopsBasedOnOS(String os) {
+		List<LaptopsOSTypeBean> OSTypeLaptopList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_os_type").where(QueryBuilder.in("operating_system", os)), LaptopsOSTypeBean.class);
+	return OSTypeLaptopList;
 	}
 	
 }

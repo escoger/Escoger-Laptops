@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.escoger.laptops.beans.AllLaptopBean;
+import com.escoger.laptops.beans.BrandsBean;
 import com.escoger.laptops.services.LaptopService;
 
 @RestController
@@ -39,18 +40,29 @@ public class LaptopsController {
 	}
 	
 	@PostMapping ("/laptopBrand/brands")
-	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrands(@RequestBody List<Object> brands) {
-		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrands(brands), HttpStatus.OK);
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrands(@RequestBody BrandsBean brands) {
+		System.out.println("brands :"+brands);
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrands(brands.getBrands()), HttpStatus.OK);
 	}
 	
 	@GetMapping("/recentLaunches")
-	public ResponseEntity<List<AllLaptopBean>> getAllLaptopsBasedOnRecentLaunches() {
-		return new ResponseEntity<List<AllLaptopBean>>(laptopService.getAllLaptopsBasedOnRecentLaunches(), HttpStatus.OK);
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnRecentLaunches() {
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnRecentLaunches(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/recentLaunches/{brand}")
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndRecentLaunches(@PathVariable String brand) {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndRecentLaunches(brand), HttpStatus.OK);
+	}
+	
+	@GetMapping("/operatingSystem/{os}")
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnOS(@PathVariable String os) {
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnOS(os), HttpStatus.OK);
+	}
+	
+	@GetMapping("/operatingSystem/{os}/{brand}")
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndOS(@PathVariable String os, @PathVariable String brand) {
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndOS(os, brand), HttpStatus.OK);
 	}
 
 	@GetMapping("/laptopBrand/{brand}/colour/{colour}")
@@ -65,10 +77,7 @@ public class LaptopsController {
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndMemory(@PathVariable String brand, @PathVariable String memory) {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndMemory(brand, memory), HttpStatus.OK);
 	}
-	@GetMapping("/laptopBrand/{brand}/os/{os}")
-	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndOS(@PathVariable String brand, @PathVariable String os) {
-		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndOS(brand, os), HttpStatus.OK);
-	}
+	
 	@GetMapping("/laptopBrand/{brand}/priceRange/{priceRange}")
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndPriceRange(@PathVariable String brand, @PathVariable String priceRange) {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndPriceRange(brand, priceRange), HttpStatus.OK);
