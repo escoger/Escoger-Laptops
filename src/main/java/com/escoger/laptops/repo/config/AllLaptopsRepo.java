@@ -24,7 +24,7 @@ public interface AllLaptopsRepo  {
 
 	Collection<? extends Object> getAllLaptopsBasedOnBrandAndMemory(String brand, String memory, Class clazz);
 
-	Collection<? extends Object> getAllLaptopsBasedOnBrandAndRam(String brand, String ram, Class clazz);
+	Collection<? extends Object> getAllLaptopsBasedOnBrandAndRam(String ramSize, String brand, Class clazz);
 
 	Collection<? extends Object> getAllLaptopsBasedOnBrand(String brand, Class clazz);
 
@@ -33,5 +33,7 @@ public interface AllLaptopsRepo  {
 	public List<AllLaptopBean> getAllLaptopsBasedOnRecentLaunches();
 
 	public Collection<? extends Object> getAllLaptopsBasedOnOS(String os);
+
+	public Collection<? extends Object> getAllLaptopsBasedOnRamSize(String ram, Class clazz);
 		
 }

@@ -10,7 +10,7 @@ public interface LaptopService {
 	public List<AllLaptopBean> getAllLaptops();
 	public List<Object> getAllLaptopsBasedOnBrand(String brand);
 	public List<Object> getAllLaptopsBasedOnBrandAndScreensize(String brand, String Screensize);
-	public List<Object> getAllLaptopsBasedOnBrandAndRam(String brand, String Ram);
+	public List<Object> getAllLaptopsBasedOnBrandAndRam(String ramSize, String brand);
 	public List<Object> getAllLaptopsBasedOnBrandAndMemory(String brand, String memory);
 	public List<Object> getAllLaptopsBasedOnBrandAndProcessor(String brand, String processor);
 	public List<Object> getAllLaptopsBasedOnBrandAndColour(String brand, String colour);
@@ -22,6 +22,7 @@ public interface LaptopService {
 	public List<Object> getAllLaptopsBasedOnBrands(List<Object> brands);
 	public List<Object> getAllLaptopsBasedOnRecentLaunches();
 	public List<Object> getAllLaptopsBasedOnOS(String os);
+	public List<Object> getAllLaptopsBasedOnRamSize(String ram);
 	
 	
 }

@@ -14,6 +14,7 @@ import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.escoger.laptops.beans.AllLaptopBean;
 import com.escoger.laptops.beans.LaptopsOSTypeBean;
+import com.escoger.laptops.beans.LaptopsRamBean;
 import com.escoger.laptops.repo.config.AllLaptopsRepo;
 import com.escoger.laptops.services.LaptopService;
 import com.escoger.laptops.services.LaptopServiceImpl;
@@ -164,8 +165,8 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 
 
 	@Override
-	public Collection<? extends Object> getAllLaptopsBasedOnBrandAndRam(String brand, String ram, Class clazz) {
-		List<AllLaptopBean> getAllLaptopsBasedOnBrandAndRamList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"laptops").where(QueryBuilder.eq("laptopType", "ram")), clazz);
+	public Collection<? extends Object> getAllLaptopsBasedOnBrandAndRam(String ramSize, String brand, Class clazz) {
+		List<LaptopsRamBean> getAllLaptopsBasedOnBrandAndRamList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_ram_size").where(QueryBuilder.eq("ram_size",ramSize)).and(QueryBuilder.eq("brand", brand)), clazz);
 		return getAllLaptopsBasedOnBrandAndRamList;
 	}
 
@@ -193,6 +194,13 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 	public Collection<? extends Object> getAllLaptopsBasedOnOS(String os) {
 		List<LaptopsOSTypeBean> OSTypeLaptopList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_os_type").where(QueryBuilder.in("operating_system", os)), LaptopsOSTypeBean.class);
 	return OSTypeLaptopList;
+	}
+
+
+	@Override
+	public Collection<? extends Object> getAllLaptopsBasedOnRamSize(String ram, Class clazz) {
+		List<LaptopsRamBean> OSTypeLaptopList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_ram_size").where(QueryBuilder.in("ram_size", ram)), LaptopsRamBean.class);
+		return OSTypeLaptopList;
 	}
 	
 }

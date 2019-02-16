@@ -81,7 +81,7 @@ public class LaptopServiceImpl implements LaptopService{
 
 
 	@Override
-	public List<Object> getAllLaptopsBasedOnBrandAndRam(String brand, String Ram) {
+	public List<Object> getAllLaptopsBasedOnBrandAndRam(String ramSize, String brand) {
 		List<Object> AllLaptopsBasedOnBrandAndRamList = null;
 		Class clazz = null;
 		
@@ -90,9 +90,9 @@ public class LaptopServiceImpl implements LaptopService{
 		}
 		
 		try {
-			 clazz = Class.forName("com.escoger.laptops.beans."+brand);
+			 clazz = Class.forName("com.escoger.laptops.beans.LaptopsRamBean");
 			 System.out.println("clazz is :"+clazz);
-			 AllLaptopsBasedOnBrandAndRamList = new ArrayList<Object>(laptopDao.getAllLaptopsBasedOnBrandAndRam(brand,Ram,clazz));
+			 AllLaptopsBasedOnBrandAndRamList = new ArrayList<Object>(laptopDao.getAllLaptopsBasedOnBrandAndRam(ramSize,brand,clazz));
 		}
 		
 		catch(Exception e1) {
@@ -331,4 +331,28 @@ public class LaptopServiceImpl implements LaptopService{
 		OSTypeLaptopList = new ArrayList<Object>(laptopDao.getAllLaptopsBasedOnOS(os));
 		 return OSTypeLaptopList;
 	}
+
+
+	@Override
+	public List<Object> getAllLaptopsBasedOnRamSize(String ram) {
+		List<Object> AllLaptopsBasedOnRamList = null;
+	Class clazz = null;
+	
+	if(ram==null || ram.isEmpty()) {
+		// need to handle this scenario
+	}
+	
+	try {
+		 clazz = Class.forName("com.escoger.laptops.beans.LaptopsRamBean");
+		 System.out.println("clazz is :"+clazz);
+		 AllLaptopsBasedOnRamList = new ArrayList<Object>(laptopDao.getAllLaptopsBasedOnRamSize(ram,clazz));
+	}
+	
+	catch(Exception e1) {
+		e1.printStackTrace();
+	}
+
+	return AllLaptopsBasedOnRamList;
+}
+
 }

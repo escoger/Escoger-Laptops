@@ -64,6 +64,16 @@ public class LaptopsController {
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndOS(@PathVariable String os, @PathVariable String brand) {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndOS(os, brand), HttpStatus.OK);
 	}
+	
+	@GetMapping("/ramsize/{ram}")
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnRamSize(@PathVariable String ram) {
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnRamSize(ram), HttpStatus.OK);
+	}
+	
+	@GetMapping("/ramsize/{ramSize}/{brand}")
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndRam(@PathVariable String ramSize, @PathVariable String brand) {
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndRam(ramSize, brand), HttpStatus.OK);
+	}
 
 	@GetMapping("/laptopBrand/{brand}/colour/{colour}")
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndColour(@PathVariable String brand, @PathVariable String colour) {
@@ -85,10 +95,6 @@ public class LaptopsController {
 	@GetMapping("/laptopBrand/{brand}/processor/{processor}")
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndProcessor(@PathVariable String brand, @PathVariable String processor) {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndProcessor(brand, processor), HttpStatus.OK);
-	}
-	@GetMapping("/laptopBrand/{brand}/Ram/{Ram}")
-	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndRam(@PathVariable String brand, @PathVariable String Ram) {
-		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndRam(brand, Ram), HttpStatus.OK);
 	}
 	
 	@GetMapping("/laptopBrand/{brand}/Screensize/{Screensize}")
