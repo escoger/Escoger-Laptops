@@ -355,4 +355,46 @@ public class LaptopServiceImpl implements LaptopService{
 	return AllLaptopsBasedOnRamList;
 }
 
+
+	@Override
+	public List<Object> getAllLaptopsBasedOnOffers() {
+		List<Object> AllLaptopsBasedOnRamList = null;
+	Class clazz = null;
+	
+	try {
+		 clazz = Class.forName("com.escoger.laptops.beans.LaptopsOffersBean");
+		 System.out.println("clazz is :"+clazz);
+		 AllLaptopsBasedOnRamList = new ArrayList<Object>(laptopDao.getAllLaptopsBasedOnOffers());
+	}
+	
+	catch(Exception e1) {
+		e1.printStackTrace();
+	}
+
+	return AllLaptopsBasedOnRamList;
+}
+
+
+	@Override
+	public List<Object> getAllLaptopsBasedOnOffersAndBrand(String brand) {
+		List<Object> AllLaptopsBasedOnOffersAndBrandList = null;
+	Class clazz = null;
+	
+	if(brand==null || brand.isEmpty()) {
+		// need to handle this scenario
+	}
+	
+	try {
+		 clazz = Class.forName("com.escoger.laptops.beans.LaptopsOffersBean");
+		 System.out.println("clazz is :"+clazz);
+		 AllLaptopsBasedOnOffersAndBrandList = new ArrayList<Object>(laptopDao.getAllLaptopsBasedOnOffersAndBrand(brand,clazz));
+	}
+	
+	catch(Exception e1) {
+		e1.printStackTrace();
+	}
+
+	return AllLaptopsBasedOnOffersAndBrandList;
+}
+
 }

@@ -23,6 +23,8 @@ public interface LaptopService {
 	public List<Object> getAllLaptopsBasedOnRecentLaunches();
 	public List<Object> getAllLaptopsBasedOnOS(String os);
 	public List<Object> getAllLaptopsBasedOnRamSize(String ram);
+	public List<Object> getAllLaptopsBasedOnOffers();
+	public List<Object> getAllLaptopsBasedOnOffersAndBrand(String brand);
 	
 	
 }

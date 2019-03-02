@@ -75,6 +75,16 @@ public class LaptopsController {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndRam(ramSize, brand), HttpStatus.OK);
 	}
 
+	@GetMapping("/offers")
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnOffers() {
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnOffers(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/offers/{brand}")
+	public ResponseEntity<List<Object>> getAllLaptopsBasedOnOffersAndBrand(@PathVariable String brand) {
+		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnOffersAndBrand(brand), HttpStatus.OK);
+	}
+	
 	@GetMapping("/laptopBrand/{brand}/colour/{colour}")
 	public ResponseEntity<List<Object>> getAllLaptopsBasedOnBrandAndColour(@PathVariable String brand, @PathVariable String colour) {
 		return new ResponseEntity<List<Object>>(laptopService.getAllLaptopsBasedOnBrandAndColour(brand, colour), HttpStatus.OK);

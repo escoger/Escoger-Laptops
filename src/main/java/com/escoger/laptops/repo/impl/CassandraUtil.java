@@ -14,6 +14,7 @@ import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.escoger.laptops.beans.AllLaptopBean;
 import com.escoger.laptops.beans.LaptopsOSTypeBean;
+import com.escoger.laptops.beans.LaptopsOffersBean;
 import com.escoger.laptops.beans.LaptopsRamBean;
 import com.escoger.laptops.repo.config.AllLaptopsRepo;
 import com.escoger.laptops.services.LaptopService;
@@ -201,6 +202,27 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 	public Collection<? extends Object> getAllLaptopsBasedOnRamSize(String ram, Class clazz) {
 		List<LaptopsRamBean> OSTypeLaptopList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_ram_size").where(QueryBuilder.in("ram_size", ram)), LaptopsRamBean.class);
 		return OSTypeLaptopList;
+	}
+
+
+	@Override
+	public Collection<? extends Object> getAllLaptopsBasedOnRamSize() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Collection<? extends Object> getAllLaptopsBasedOnOffers() {
+		List<LaptopsOffersBean> offersLaptopList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_offers"), LaptopsOffersBean.class);
+		return offersLaptopList;
+	}
+
+
+	@Override
+	public Collection<? extends Object> getAllLaptopsBasedOnOffersAndBrand(String brand, Class clazz) {
+		List<LaptopsOffersBean> brandOffersLaptopList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_offers").where(QueryBuilder.eq("brand", brand)), LaptopsOffersBean.class);
+	return brandOffersLaptopList;
 	}
 	
 }

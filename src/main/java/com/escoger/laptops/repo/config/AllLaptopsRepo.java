@@ -35,5 +35,11 @@ public interface AllLaptopsRepo  {
 	public Collection<? extends Object> getAllLaptopsBasedOnOS(String os);
 
 	public Collection<? extends Object> getAllLaptopsBasedOnRamSize(String ram, Class clazz);
+
+	public Collection<? extends Object> getAllLaptopsBasedOnRamSize();
+
+	public Collection<? extends Object> getAllLaptopsBasedOnOffers();
+
+	public Collection<? extends Object> getAllLaptopsBasedOnOffersAndBrand(String brand, Class clazz);
 		
 }
