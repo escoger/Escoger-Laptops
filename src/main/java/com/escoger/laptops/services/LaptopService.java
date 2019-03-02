@@ -25,6 +25,7 @@ public interface LaptopService {
 	public List<Object> getAllLaptopsBasedOnRamSize(String ram);
 	public List<Object> getAllLaptopsBasedOnOffers();
 	public List<Object> getAllLaptopsBasedOnOffersAndBrand(String brand);
+	public List<Object> getLaptopDetails(String model_number);
 	
 	
 }

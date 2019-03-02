@@ -397,4 +397,27 @@ public class LaptopServiceImpl implements LaptopService{
 	return AllLaptopsBasedOnOffersAndBrandList;
 }
 
+
+	@Override
+	public List<Object> getLaptopDetails(String model_number) {
+		List<Object> laptopDetailsList = null;
+	Class clazz = null;
+	
+	if(model_number==null || model_number.isEmpty()) {
+		// need to handle this scenario
+	}
+	
+	try {
+		 clazz = Class.forName("com.escoger.laptops.beans.LaptopDetailsBean");
+		 System.out.println("clazz is :"+clazz);
+		 laptopDetailsList = new ArrayList<Object>(laptopDao.getLaptopDetails(model_number,clazz));
+	}
+	
+	catch(Exception e1) {
+		e1.printStackTrace();
+	}
+
+	return laptopDetailsList;
+}
+
 }

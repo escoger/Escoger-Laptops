@@ -41,5 +41,7 @@ public interface AllLaptopsRepo  {
 	public Collection<? extends Object> getAllLaptopsBasedOnOffers();
 
 	public Collection<? extends Object> getAllLaptopsBasedOnOffersAndBrand(String brand, Class clazz);
+
+	public Collection<? extends Object> getLaptopDetails(String model_number, Class clazz);
 		
 }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.escoger.laptops.beans.AllLaptopBean;
+import com.escoger.laptops.beans.LaptopDetailsBean;
 import com.escoger.laptops.beans.LaptopsOSTypeBean;
 import com.escoger.laptops.beans.LaptopsOffersBean;
 import com.escoger.laptops.beans.LaptopsRamBean;
@@ -223,6 +224,13 @@ import com.escoger.laptops.services.LaptopServiceImpl;
 	public Collection<? extends Object> getAllLaptopsBasedOnOffersAndBrand(String brand, Class clazz) {
 		List<LaptopsOffersBean> brandOffersLaptopList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_offers").where(QueryBuilder.eq("brand", brand)), LaptopsOffersBean.class);
 	return brandOffersLaptopList;
+	}
+
+
+	@Override
+	public Collection<? extends Object> getLaptopDetails(String model_number, Class clazz) {
+		List<LaptopDetailsBean> laptopDetailsList = this.cassandraTemplate.select(QueryBuilder.select().from("laptops_details").where(QueryBuilder.eq("model_number", model_number)), LaptopDetailsBean.class);
+	return laptopDetailsList;
 	}
 	
 }
